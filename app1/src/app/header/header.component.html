@@ -1,0 +1,21 @@
+<nav class="center">
+  <ul class="nav">
+    <li *ngFor="let item of navs"><a href="#s" class="nav-item mr-3" [innerText]="item" ></a></li>
+  </ul>
+  <section>
+      <input type="text" [(ngModel)]="searchString" (input)="getSearchString($event)" [ngStyle]="{'border': '1px solid '+getColor()}" [ngClass]="{redBackground:searchString.length<=0
+      }">
+      <p *ngIf="searchString; else nosearchString">You search for: {{searchString}}</p>
+      <ng-template #nosearchString>
+        <p>Please Enter any string to search..</p>
+      </ng-template>
+  </section>
+  <button (click)="getData();">Get</button>
+  <ul>
+      <li *ngFor="let user of response">{{user.email}}, {{user.name}}</li>
+  </ul>
+  <button (click)="sendMessage()">child to parent</button>
+
+  <p>Any Message: {{anyMessage}}</p>
+  
+</nav>
